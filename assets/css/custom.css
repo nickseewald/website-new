@@ -16,3 +16,11 @@
     background-position: 50% 5%;
     background-size: cover;
 }
+
+.font-emphasis {
+    font-family: 'Staatliches';
+}
+
+.font-lab-member {
+    text-decoration: underline;
+}
