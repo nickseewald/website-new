@@ -1,5 +1,5 @@
 schema: hugoblox/author/v1
-slug: me
+slug: nseewald
 is_owner: true
 name:
   display: Nicholas J. Seewald
@@ -17,7 +17,7 @@ bio: |
   Nick Seewald is a collaborative biostatistician specializing in causal
   inference with complex longitudinal data and cancer clinical trials.
 
-highlight_name: true
+highlight: true
 
 user_groups:
   - PI
