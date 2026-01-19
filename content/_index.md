@@ -18,9 +18,9 @@ sections:
       # Show a call-to-action button under your biography? (optional)
       button:
         text: Download CV
-        url: uploads/resume.pdf
+        url: https://raw.githubusercontent.com/nickseewald/seewaldCV/main/Seewald-Curriculum-Vitae.pdf
       headings:
-        about: ''
+        about: "Hi, I'm Nick."
         education: ''
         interests: ''
     design:
@@ -31,24 +31,28 @@ sections:
 
       # Name heading sizing to accommodate long or short names
       name:
-        size: md # Options: xs, sm, md, lg (default), xl
+        size: sm # Options: xs, sm, md, lg (default), xl
 
       # Avatar customization
       avatar:
         size: medium # Options: small (150px), medium (200px, default), large (320px), xl (400px), xxl (500px)
         shape: circle # Options: circle (default), square, rounded
+      typography:
+        font: serif
   - block: markdown
     content:
-      title: '📚 My Research'
+      title: 'I am a collaborative biostatistician who builds tools to enable high quality, impactful science.'
       subtitle: ''
       text: |-
-        Use this area to speak to your mission. I'm a research scientist in the Moonshot team at DeepMind. I blog about machine learning, deep learning, and moonshots.
-
-        I apply a range of qualitative and quantitative methods to comprehensively investigate the role of science and technology in the economy.
-
-        Please reach out to collaborate 😃
+        I develop methods and collaborations that create knowledge to improve human health. My work is driven by a commitment to build usable and accessible methods, and I am driven by deep substantive collaboration across disciplines. I am interested in bridging gaps between statistical theory and practice, and building and disseminating tools to help scientists across fields – including oncology, health policy, substance use, and implementation science – ask better questions and arrive at trustworthy answers.
     design:
       columns: '1'
+  - block: markdown
+    content:
+      title: 'I am an expert in causal inference with complex repeated-measures data.'
+      subtitle: ''
+      text: |-
+        I have deep expertise in the design and analysis of sequential, multiple-assignment randomized trials (SMARTs), particularly those with longitudinal outcomes. In non-experimental settings, my work focuses on statistical issues in the use of multilevel data for health policy evaluation.
   - block: collection
     id: papers
     content:

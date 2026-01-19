@@ -1,0 +1,43 @@
+# Display name
+title: Melissa Lynne Martin
+
+# Role/position
+role: PhD Student
+
+# Short bio (supports Markdown)
+bio: |
+  PhD Student in Biostatistics at the University of Pennsyvlania Perelman School of Medicine.
+  
+highlight_user: true
+
+# Organization(s)
+organizations:
+  - name: University of Pennsylvania Perelman School of Medicine
+    url: "https://www.med.upenn.edu/"
+
+user_groups:
+  - Biostatistics Students
+
+# Social/contact links
+social:
+- icon: academicons/orcid
+  link: https://orcid.org/0000-0001-8631-5596
+- icon: academicons/google-scholar
+  link: https://scholar.google.com/citations?hl=en&user=ZKugvewAAAAJ
+
+# Education (optional)
+education:
+  courses:
+  - course: MS in Biostatistics
+    institution: University of Pennsylvania
+    year: 2020
+  - course: BA in Mathematics, Specialization in Statistics; Minor in Psychology
+    institution: The College of New Jersey
+    year: 2017
+
+# Interests (optional)
+interests:
+  - Mobile health
+  - Change point detection
+  - Multiple testing
+  - SMART designs

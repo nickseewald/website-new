@@ -1,0 +1,42 @@
+schema: hugoblox/author/v1
+
+# Display name
+title: Meghan Gerety
+
+# Role/position
+role: PhD Student
+
+# Short bio (supports Markdown)
+bio: |
+  PhD Student in Biostatistics at the University of Pennsyvlania Perelman School of Medicine.
+
+# Organization(s)
+organizations:
+  - name: University of Pennsylvania Perelman School of Medicine
+    url: "https://www.med.upenn.edu/"
+
+user_groups:
+  - Biostatistics Students
+
+# Social/contact links
+social:
+- icon: academicons/orcid
+  link: https://orcid.org/0000-0002-8586-5139
+- icon: academicons/google-scholar
+  link: https://scholar.google.com/citations?user=B7WhE5AAAAAJ&hl=en
+
+# Education (optional)
+education:
+  courses:
+  - course: MS in Statistics (concentration in Biostatistics)
+    institution: University of Virginia
+    year: 2023
+  - course: BA in Statistics (concentration in Biostatistics) and Global Public Health
+    institution: University of Virginia
+    year: 2022
+
+# Interests (optional)
+interests:
+  - Causal Inference
+  - Complex Longitudinal Data
+  - Survival Analysis
