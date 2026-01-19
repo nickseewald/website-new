@@ -19,7 +19,11 @@
     {{- if gt $index 0 }}, {{ end -}}
     <span {{ if $highlight_name }}class="font-emphasis"{{end}}{{ if $lab_member }}class="font-lab-member"{{end}}>
       {{- if and $termPage $profile.has_data -}}
-        <a href="{{ $termPage.RelPermalink }}">{{ $display }}</a>
+        {{- if $profile.is_owner -}}
+          <a href="{{ site.BaseURL }}">{{ $display }}</a>
+        {{- else -}}
+          <a href="{{ $termPage.RelPermalink }}">{{ $display }}</a>
+        {{- end -}}
       {{- else -}}
         {{ $display }}
       {{- end -}}
