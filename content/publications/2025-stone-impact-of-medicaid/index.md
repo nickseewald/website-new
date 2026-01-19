@@ -1,11 +1,10 @@
 ---
-title: Impact Of Medicaid Expansion On HIV Pre-Exposure Prophylaxis Coverage, 2012–23
+title: Impact of Medicaid expansion on HIV pre-exposure prophylaxis coverage, 2012–23
 authors:
   - Elizabeth M. Stone
-  - me
+  - nseewald
   - Joseph G. Rosen
-  - melissa-lynne-martin
-date: 2025-10-01T00:00:00Z
+date: 2025-10-01
 hugoblox:
   ids:
     doi: 10.1377/hlthaff.2025.00211
