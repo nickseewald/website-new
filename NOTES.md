@@ -9,3 +9,5 @@
 - Modified
   [page_metadata_authors.html](layouts/_partials/page_metadata_authors.html) to
   only link to authors with available pages (i.e., lab members)
+- Modified [single.html](/layouts/single.html) to put commas in the same div as
+  author name (i.e., the div is now author-name, vs. , author-name).
