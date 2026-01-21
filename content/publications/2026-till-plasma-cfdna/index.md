@@ -23,7 +23,7 @@ authors:
   - Robert Roses
   - Ronald DeMatteo
   - Major Kenneth Lee
-  - Chrles Vollmer
+  - Charles Vollmer
   - Hersh Sagreiya
   - Mark H. O'Hara
   - Ruth Shemer
