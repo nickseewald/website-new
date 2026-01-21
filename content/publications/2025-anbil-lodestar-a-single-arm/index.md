@@ -1,7 +1,5 @@
 ---
-title: "LODESTAR: A Single-Arm Phase II Study of Rucaparib in Solid Tumors With
-  Pathogenic Germline or Somatic Variants in Homologous Recombination Repair
-  Genes"
+title: "LODESTAR: A single-arm phase II study of rucaparib in solid tumors with pathogenic germline or somatic variants in homologous recombination repair genes"
 authors:
   - Sriram Anbil
   - nseewald
