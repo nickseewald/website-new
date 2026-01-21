@@ -1,0 +1,24 @@
+schema: hugoblox/author/v1
+
+# Display name
+title: Eleanor Taranto
+
+# Role/position
+role: Masters of Science in Clinical Epidemiology Graduate
+
+# Short bio (supports Markdown)
+bio: |
+  Assistant Professor of Medicine (Hematology-Oncology) at the Hospital of the University of Pennsylvania
+
+# Organization(s)
+organizations:
+  - name: University of Pennsylvania Perelman School of Medicine
+    url: "https://www.med.upenn.edu/"
+
+user_groups:
+  - Alumni
+
+# Social/contact links
+social:
+- icon: academicons/orcid
+  link: https://orcid.org/0000-0002-0299-2176
