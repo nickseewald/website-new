@@ -36,11 +36,12 @@ hugoblox:
     doi: 10.1002/ctm2.70573
 publication_types:
   - article-journal
-publication: Clinical and Translational Medicine
+publication: "*Clinical and Translational Medicine*"
 # publication_short: Clin Transl Med
 # links:
 #   - type: source
 #     url: http://dx.doi.org/10.1377/hlthaff.2025.00211
 featured: true
+project: [cancer-biomarkers]
 ---
 

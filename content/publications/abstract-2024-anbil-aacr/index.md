@@ -24,7 +24,7 @@ date: 2024-09-15T12:17:46-04:00
 
 hugoblox:
   ids:
-    doi: "ntfr"
+    doi: "10.1158/1538-7445.PANCREATIC24-C006"
 
 # Schedule page publish date (NOT publication's date).
 publishDate: 2025-04-13T12:17:46-04:00
@@ -63,15 +63,6 @@ featured: false
 #   icon_pack: fab
 #   icon: twitter
 
-url_pdf:
-url_code:
-url_dataset:
-url_poster:
-url_project:
-url_slides:
-url_source:
-url_video:
-
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
@@ -85,7 +76,7 @@ image:
 #   Simply enter your project's folder or file name without extension.
 #   E.g. `internal-project` references `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
-projects: []
+projects: [cancer-clinical-trails]
 
 # Slides (optional).
 #   Associate this publication with Markdown slides.
