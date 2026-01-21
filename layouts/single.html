@@ -52,16 +52,16 @@
                     {{ partial "components/icon.html" (dict "name" $icon_config.name "attributes" "class=\"w-full h-full\"") }}
                   </span>
                 {{ end }}
-                <span>{{- .Title -}}</span>
+                <span>{{- title .Title -}}</span>
               </span>
             {{ else }}
-              {{- .Title -}}
+              {{- title .Title -}}
             {{ end }}
           {{ else }}
-            {{- .Title -}}
+            {{- title .Title -}}
           {{ end }}
         {{ else }}
-          {{- .Title -}}
+          {{- title .Title -}}
         {{ end }}
       </h1>
 
