@@ -40,6 +40,7 @@ build:
     target: css
   - source: '(postcss|tailwind)\.config\.js'
     target: css
+titleCaseStyle: chicago
 enableGitInfo: false
 summaryLength: 30
 pagination:
