@@ -22,7 +22,7 @@
     </time></p>
     <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3">{{ partial "page_metadata_authors.html" $item }}</p>
     {{ if $has_attachments }}
-        <div class="flex flex-wrap space-x-3 mt-3 z-30">
+        <div class="flex flex-wrap space-x-3 mt-3 z-20">
             {{ partial "page_links" (dict "page" $item "is_list" 1) }}
         </div>
     {{ end }}
