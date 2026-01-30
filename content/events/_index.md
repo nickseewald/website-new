@@ -1,13 +1,15 @@
 ---
-title: Recent & Upcoming Talks
-cms_exclude: true
+title: Presentations & Posters
+cms_exclude: false
 #url: talk
 
 # View
-view: card
+view: compact-card
+# view: test
 
 # Optional cover image (relative to `assets/media/` folder).
 image:
   caption: ''
   filename: ''
+
 ---
