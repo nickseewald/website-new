@@ -1,0 +1,61 @@
+{{ $item := .item }}
+
+{{ $link := $item.RelPermalink }}
+{{ $target := "" }}
+{{ if $item.Params.external_link }}
+  {{ $link = $item.Params.external_link }}
+  {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
+{{ end }}
+
+{{ $resource := partial "functions/get_featured_image.html" $item }}
+{{ $anchor := "Center" }}
+{{ if and $item.Params.image (reflect.IsMap $item.Params.image) }}
+  {{ $anchor = $item.Params.image.focal_point | default "Center" }}
+{{ end }}
+{{ $fill_image := .config.fill_image | default false }}
+{{ $showDate := .config.show_date | default true }}
+{{ $showReadTime := .config.show_read_time | default true }}
+{{ $showReadMore := .config.show_read_more | default true }}
+{{ $hasMeta := or $showDate $showReadTime $showReadMore }}
+{{ $index := .index }}
+{{ $isEvent := eq $item.Type "events" }}
+{{ $event_dates := "" }}
+{{ if $isEvent }}
+{{ $event_dates = partial "functions/get_event_dates" $item }}
+{{ end }}
+
+<li class="relative flex flex-col sm:flex-row xl:flex-col items-start my-5 p-8 shadow-lg bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-2xl ring-1 ring-zinc-900/5 dark:ring-white/10 overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:shadow-primary-500/10 hover:-translate-y-2 focus-within:ring-2 focus-within:ring-primary-500/50">
+    <div class="order-1 sm:ml-6 xl:ml-0">
+        <h3 class="mb-1 sm:pl-6 text-slate-900 font-semibold">
+            <span class="mb-1 block text-sm leading-6 text-indigo-500">
+                {{ if and $item.Params.tags (gt (len $item.Params.tags) 0) }}
+                    <div class="flex items-center gap-2">
+                        {{ with index ($item.GetTerms "tags") 0 }}
+                        <a href="{{ .RelPermalink }}">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary-100 text-primary-800 dark:bg-primary-900/40 dark:text-primary-300">
+                            {{ title .Page.LinkTitle }}
+                        </span>
+                        </a>
+                        {{ end }}
+                    </div>
+                {{ end }}
+            </span>
+            {{ title $item.Title }}
+        </h3>
+        <div class="prose prose-slate prose-sm text-slate-600">
+            <p>Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind
+                CSS.</p>
+        </div><a
+            class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 mt-6"
+            href="">Learn
+            more<span class="sr-only">, Completely unstyled, fully accessible UI components</span>
+            <svg class="overflow-visible ml-3 text-slate-300 group-hover:text-slate-400"
+                width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0 0L3 3L0 6"></path>
+            </svg></a>
+    </div>
+    <img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/DSC02315_processed_2.jpg?quality=90&strip=all&crop=0.012500000000003%2C0%2C99.975%2C100&w=1440" 
+    alt="" 
+    class="mb-6 mr-6 h-48 w-96 shadow-md object-fill overflow-hidden rounded-lg bg-slate-50">
+</li>

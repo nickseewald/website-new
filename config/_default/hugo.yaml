@@ -26,6 +26,10 @@ cascade:
       path: /slides/**
       kind: page
     outputs: [HTML, present]
+  - _target:
+      path: /events/**
+      kind: page
+    pager: false
 
 ############################
 ## ADVANCED
@@ -44,7 +48,7 @@ titleCaseStyle: chicago
 enableGitInfo: false
 summaryLength: 30
 pagination:
-  pagerSize: 10
+  pagerSize: 20
 enableEmoji: true
 enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>
@@ -78,3 +82,4 @@ module:
   - disableWatch: true
     source: hugo_stats.json
     target: assets/notwatching/hugo_stats.json
+fill_image: false
