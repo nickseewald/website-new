@@ -8,7 +8,11 @@ date: 2022-12-14T13:43:59-05:00
 hugoblox:
   ids:
     doi: "10.2105/AJPH.2022.307157"
-pubmed: "36516392"
+
+links:
+  - name: PubMed
+    url: http://pubmed.ncbi.nlm.nih.gov/36516392
+    icon: academicons/pubmed
 
 # Publication type.
 publication_types: ["article-journal"]

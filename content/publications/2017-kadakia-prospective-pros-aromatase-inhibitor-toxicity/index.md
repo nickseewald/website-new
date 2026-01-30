@@ -1,6 +1,6 @@
 ---
 title: "Prospective assessment of patient-reported outcomes and estradiol and drug concentrations in patients experiencing toxicity from adjuvant aromatase inhibitors"
-date: 2017-07-01
+date: 2017-04-27
 authors: 
   - Kunal C. Kadakia
   - Kelley M. Kidwell
@@ -30,7 +30,12 @@ publication: "*Breast Cancer Research and Treatment*"
 hugoblox:
   ids:
     doi: "10.1007/S10549-017-4260-2"
+
+links:
+  - name: PubMed
+    url: http://pubmed.ncbi.nlm.nih.gov/28451964
+    icon: academicons/pubmed
+
 tags: ["cancer", collaboration, masters]
-pubmed: "28451964"
 projects: [cancer-pros]
 ---

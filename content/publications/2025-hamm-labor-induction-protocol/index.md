@@ -15,7 +15,7 @@ date: 2025-07-18T00:00:00-04:00
 
 hugoblox:
   ids:
-    doi: "pwrr"
+    doi: "10.1002/pmf2.70077"
 
 # Schedule page publish date (NOT publication's date).
 publishDate: 2025-07-24T11:44:45-04:00

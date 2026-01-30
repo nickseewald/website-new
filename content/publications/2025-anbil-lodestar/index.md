@@ -25,6 +25,12 @@ date: 2025-07-01T00:00:00Z
 hugoblox:
   ids:
     doi: 10.1200/po-25-00090
+
+links:
+  - name: PubMed
+    url: http://pubmed.ncbi.nlm.nih.gov/40632975
+    icon: academicons/pubmed
+
 publication_types:
   - article-journal
 publication: JCO Precision Oncology

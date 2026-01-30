@@ -8,9 +8,13 @@ date: 2025-10-01
 hugoblox:
   ids:
     doi: 10.1377/hlthaff.2025.00211
+links:
+  - name: PubMed
+    url: http://pubmed.ncbi.nlm.nih.gov/ 41052386
+    icon: academicons/pubmed
 publication_types:
   - article-journal
-publication: Health Affairs
+publication: "*Health Affairs*"
 publication_short: Health Affairs
 # links:
 #   - type: source

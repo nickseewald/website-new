@@ -1,6 +1,6 @@
 ---
 title: "Evidence for association of SNPs in ABCB1 and CBR3, but Not RAC2, NCF4, SLC28A3 or TOP2B, with chronic cardiotoxicity in a cohort of breast cancer patients treated with anthracyclines"
-date: 2016-01-01
+date: 2016-01-22
 publishDate: 2020-07-25T00:35:04.154767Z
 authors: 
     - Daniel L. Hertz
@@ -21,7 +21,11 @@ publication_types: ["article-journal"]
 hugoblox:
     ids:
         doi: "10.2217/pgs.15.162"
-pubmed: "26799497"
+
+links:
+  - name: PubMed
+    url: http://pubmed.ncbi.nlm.nih.gov/26799497
+    icon: academicons/pubmed
 
 abstract: |
     AIMS: Validation of associations for SNPs in RAC2, NCF4 and SLC28A3, identification of a novel association with a TOP2B SNP and screening 23 SNPs putatively relevant to anthracycline-induced cardiotoxicity.

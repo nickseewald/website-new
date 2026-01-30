@@ -16,7 +16,11 @@ date: 2023-07-01
 hugoblox:
   ids:
     doi: "10.7326/M23-0053"
-pubmed: "37399549"
+
+links:
+  - name: PubMed
+    url: http://pubmed.ncbi.nlm.nih.gov/37399549
+    icon: academicons/pubmed
 
 # Schedule page publish date (NOT publication's date).
 publishDate: 2023-12-01T13:23:59-05:00

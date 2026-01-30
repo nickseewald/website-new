@@ -9,14 +9,15 @@ authors:
 date: 2024-11-11T10:10:21-05:00
 
 hugoblox:
-    ids:
-        doi: "10.7326/M23-2440"
-pubmed: "39374529"
+  ids:
+    doi: "10.7326/M23-2440"
+links:
+  - name: PubMed
+    url: http://pubmed.ncbi.nlm.nih.gov/39374529
+    icon: academicons/pubmed
 
 # Schedule page publish date (NOT publication's date).
 publishDate: 2024-11-25T10:10:21-05:00
-
-slug: seewald-policy-trial-emulation-2024
 
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;

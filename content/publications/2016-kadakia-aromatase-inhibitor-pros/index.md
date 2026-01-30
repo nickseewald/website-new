@@ -22,8 +22,11 @@ publication_types: ["article-journal"]
 hugoblox:
   ids:
     doi: "10.1634/theoncologist.2015-0349"
-    
-pubmed: "27009936"
+
+links:
+  - name: PubMed
+    url: http://pubmed.ncbi.nlm.nih.gov/27009936
+    icon: academicons/pubmed
 
 abstract: |
   **BACKGROUND.** Early discontinuation of aromatase inhibitors (AIs) is common and leads to poor outcomes but is challenging to predict. In the Exemestane and Letrozole Pharmacogenetics trial, a high rate of early discontinuation due to intolerance was observed. We hypothesized that early changes in patient-reported outcomes (PROs) predict AI discontinuation and that biochemical factors are associated with changes in PROs.

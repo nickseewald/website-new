@@ -1,13 +1,13 @@
 ---
 # Documentation: https://docs.hugoblox.com/managing-content/
 
-title: "[Dissertation] Design and Analytic Considerations for Sequential, Multiple-Assignment Randomized Trials with Longitudinal Outcomes"
+title: "[Dissertation] Design and analytic considerations for sequential, multiple-assignment randomized trials with longitudinal outcomes"
 authors: [nseewald]
 date: 2021-05-10T13:13:00-04:00
 
 hugoblox:
   ids:
-  doi: "n4r2"
+    doi: "n4r2"
 
 # Schedule page publish date (NOT publication's date).
 publishDate: 2025-04-13T13:13:00-04:00
@@ -28,7 +28,7 @@ abstract: |
 # Summary. An optional shortened abstract.
 summary: "A dissertation submitted in partial fulfillment of the requirements for the degree of Doctor of Philosophy (Statistics)in the University of Michigan."
 
-tags: [SMARTs, DTRs]
+tags: [SMARTs, DTRs, Dissertation, PhD]
 categories: []
 featured: false
 
@@ -39,15 +39,6 @@ featured: false
 #   url: https://twitter.com
 #   icon_pack: fab
 #   icon: twitter
-
-url_pdf:
-url_code:
-url_dataset:
-url_poster:
-url_project:
-url_slides:
-url_source:
-url_video:
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
