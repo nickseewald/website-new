@@ -1,5 +1,3 @@
-schema: hugoblox/author/v1
-
 # Display name
 title: Meghan Gerety
 
@@ -9,7 +7,8 @@ role: PhD Student
 # Short bio (supports Markdown)
 bio: |
   PhD Student in Biostatistics at the University of Pennsyvlania Perelman School of Medicine.
-
+  
+highlight_user: true
 # Organization(s)
 organizations:
   - name: University of Pennsylvania Perelman School of Medicine

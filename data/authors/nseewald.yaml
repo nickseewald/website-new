@@ -38,7 +38,7 @@ links:
 - icon: brands/github
   link: https://github.com/nickseewald
 - icon: academicons/cv
-  link: https://raw.githubusercontent.com/nickseewald/seewaldCV/main/Seewald-Curriculum-Vitae.pdf
+  link: https://nickseewald.github.io/seewaldCV/Seewald-Curriculum-Vitae.pdf
   target: _blank
 
 interests:

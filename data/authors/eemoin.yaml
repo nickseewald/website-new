@@ -1,0 +1,26 @@
+schema: hugoblox/author/v1
+
+# Display name
+title: Emily E. Moin
+
+# Role/position
+role: Masters of Science in Clinical Epidemiology Graduate
+
+# Short bio (supports Markdown)
+bio: |
+  Fellow in the Division of Pulmonary and Critical Care Medicine at the Hospital of the University of Pennsylvania
+
+# Organization(s)
+organizations:
+  - name: University of Pennsylvania Perelman School of Medicine
+    url: "https://www.med.upenn.edu/"
+
+user_groups:
+  - Alumni
+
+# Social/contact links
+social:
+- icon: academicons/orcid
+  link: "https://orcid.org/0000-0002-5174-6473"
+- icon: academicons/google-scholar
+  link: https://scholar.google.com/citations?user=zmqP2jkAAAAJ

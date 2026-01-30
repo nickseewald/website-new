@@ -23,7 +23,7 @@ sections:
       show_organizations: true
       show_interests: true
       max_interests: 4   # set 0 to hide interests even if provided
-      align: left      # or "left" to align header + CTA left
+      align: center      # or "left" to align header + CTA left
       max_columns: 4     # 2, 3, or 4
       show_social: true
       show_empty_groups: false # show a placeholder when a group has no members
