@@ -25,7 +25,7 @@ all_day: false
 # Schedule page publish date (NOT event date).
 publishDate: 2022-04-04T14:52:54-04:00
 
-authors: ["Ahnalee Brincks", "Shawna N. Smith", admin]
+authors: ["Ahnalee Brincks", "Shawna N. Smith", nseewald]
 tags: [SMARTs]
 categories: [workshops]
 
