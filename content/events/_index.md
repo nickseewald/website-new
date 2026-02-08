@@ -1,7 +1,7 @@
 ---
 title: Presentations & Posters
 cms_exclude: false
-#url: talk
+url: events
 
 # View
 view: compact-card

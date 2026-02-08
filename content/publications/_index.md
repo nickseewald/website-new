@@ -13,4 +13,4 @@ banner:
   image_size: "cover"
 ---
 
-<span style="font-size: 75%;"><span style="text-decoration: underline;">Underline</span> indicates trainee with significant mentoring.</span>
+<span style="text-decoration: underline;">Underline</span> indicates trainee with significant mentoring.

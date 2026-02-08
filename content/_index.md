@@ -58,32 +58,35 @@ sections:
     id: papers
     content:
       title: Featured Publications
+      count: 4
       filters:
         folders:
           - publications
         featured_only: true
     design:
-      view: article-grid
-      columns: 2
+      view: publist
+      columns: 1
   - block: collection
     content:
-      title: Recent Publications
+      title: Other Recent Publications
       text: ''
+      count: 3
       filters:
         folders:
           - publications
-        exclude_featured: false
+        exclude_featured: true
     design:
       view: citation
   - block: collection
     id: talks
     content:
       title: Recent & Upcoming Talks
+      count: 3
       filters:
         folders:
           - events
     design:
-      view: card
+      view: compact-card
   - block: collection
     id: news
     content:
