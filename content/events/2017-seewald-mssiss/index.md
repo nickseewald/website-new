@@ -68,6 +68,5 @@ slides: ""
 projects: ["smart-longitudinal"]
 ---
 
-{{% callout note %}}
+> [!NOTE]
 Winner: Best Departmental Poster Award, Statistics.
-{{% /callout %}}

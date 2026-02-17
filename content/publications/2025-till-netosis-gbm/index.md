@@ -74,26 +74,26 @@ featured: false
 # Standard identifiers for auto-linking
 hugoblox:
   ids:
-    arxiv: ""
+    doi: 10.1158/1078-0432.CCR-24-3169
 
 # Custom links
-links:
-  - type: pdf
-    url: ""
-  - type: code
-    url: ""
-  - type: dataset
-    url: ""
-  - type: poster
-    url: ""
-  - type: project
-    url: ""
-  - type: slides
-    url: ""
-  - type: source
-    url: ""
-  - type: video
-    url: ""
+# links:
+#   - type: pdf
+#     url: ""
+#   - type: code
+#     url: ""
+#   - type: dataset
+#     url: ""
+#   - type: poster
+#     url: ""
+#   - type: project
+#     url: ""
+#   - type: slides
+#     url: ""
+#   - type: source
+#     url: ""
+#   - type: video
+#     url: ""
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.

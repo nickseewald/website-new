@@ -71,6 +71,5 @@ slides: ""
 #   Otherwise, set `projects = []`.
 projects: [policy-trial-emulation]
 ---
-{{% callout note %}}
+> [!NOTE]
 My travel to SER 2023 was generously supported by a travel grant from the Society.
-{{% /callout %}}
