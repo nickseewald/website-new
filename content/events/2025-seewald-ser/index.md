@@ -1,70 +1,44 @@
 ---
-# Documentation: https://docs.hugoblox.com/managing-content/
-
 title: "Ecological regression in health policy evaluation: A guilt-free dessert"
-event: "Society for Epidemiologic Research Annual Meeting 2025"
 event_url: https://epiresearch.org/annual-meeting/2025-meeting/
 location: Boston, MA, USA
 address:
-  street:
-  city:
-  region:
-  postcode:
-  country:
+  street: null
+  city: null
+  region: null
+  postcode: null
+  country: null
 summary: An invited talk in a symposium titled "Can we have our cake and eat it too? Integrating epidemiologic and econometric methods to causal inference", organized by Ellicott Matthay.
-abstract:
-
+abstract: null
 slug: ser2025
-
-# Talk start and end times.
-#   End time can optionally be hidden by prefixing the line with `#`.
 date: 2025-06-11T10:23:12-04:00
-date_end: 2025-06-11T10:23:12-04:00
-all_day: false
-
-# Schedule page publish date (NOT event date).
-publishDate: 2025-06-11T10:23:12-04:00
-
-authors: [nseewald]
-tags: [policy evaluation]
-categories: [invited talks]
-
-# Is this a featured event? (true/false)
+authors:
+  - nseewald
+tags:
+  - policy evaluation
+categories:
+  - invited talks
 featured: false
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder. 
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
   caption: ""
   focal_point: ""
   preview_only: false
-
-# Custom links (optional).
-# Uncomment and edit lines below to show custom links.
 links:
   - name: Slides
     url: ser2025.pdf
     type: slides
-
-url_code: 
-url_pdf:
-url_video:
-
-# Markdown Slides (optional).
-#   Associate this event with Markdown slides.
-#   Simply enter your slide deck's filename without extension.
-#   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
-#   Otherwise, set `slides = ""`.
+url_code: null
+url_pdf: null
+url_video: null
 slides: ""
-
-# Projects (optional).
-#   Associate this post with one or more of your projects.
-#   Simply enter your project's folder or file name without extension.
-#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
-#   Otherwise, set `projects = []`.
-projects: [multilevel-did]
+projects:
+  - multilevel-did
+event_start: 2025-06-11T10:23:12-04:00
+event_end: 2025-06-11T10:23:12-04:00
+event_all_day: false
+event_name: Society for Epidemiologic Research Annual Meeting 2025
 ---
+
 {{% callout note %}}
 My registration for SER 2025 was generously supported by a travel grant from the Society.
 {{% /callout %}}
