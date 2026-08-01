@@ -27,7 +27,7 @@ all_day: false
 # Schedule page publish date (NOT event date).
 publishDate: 2025-04-08T11:26:32-04:00
 
-authors: [admin, Eli Ben-Michael, Beth McGinty]
+authors: [nseewald, Eli Ben-Michael, Beth McGinty]
 tags: [policy evaluation]
 categories: [workshops]
 

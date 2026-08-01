@@ -28,7 +28,7 @@ all_day: false
 # Schedule page publish date (NOT event date).
 publishDate: 2025-04-01T19:21:48-04:00
 
-authors: [admin]
+authors: [nseewald]
 tags: [causal inference, policy evaluation, estimands]
 categories: [invited talks]
 

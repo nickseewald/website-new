@@ -25,7 +25,7 @@ all_day: false
 # Schedule page publish date (NOT event date).
 publishDate: 2021-10-22T15:27:50-04:00
 
-authors: [admin]
+authors: [nseewald]
 tags: [SMARTs, DTRs]
 categories: [invited talks]
 

@@ -1,5 +1,7 @@
 schema: hugoblox/author/v1
 
+disable_photo: true
+
 # Display name
 title: Emily E. Moin
 

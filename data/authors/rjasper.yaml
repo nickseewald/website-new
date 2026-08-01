@@ -20,6 +20,8 @@ user_groups:
 
 # Social/contact links
 social:
+- icon: hero/globe-alt
+  link: https://www.ryanajasper.com/
 - icon: academicons/orcid
   link: https://orcid.org/0000-0001-8631-5596
 - icon: academicons/google-scholar

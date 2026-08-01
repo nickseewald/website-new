@@ -58,12 +58,12 @@
 {{ $ctaAlignClass := cond (eq $align "left") "text-left" "text-center" }}
 
 {{ $columnsClasses := dict
-  "2" "grid grid-cols-1 gap-8 sm:grid-cols-2"
-  "3" "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-  "4" "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  "2" "w-full sm:w-1/2"
+  "3" "w-full sm:w-1/2 lg:w-1/3"
+  "4" "w-full sm:w-1/2 lg:w-1/3 xl:w-1/4"
 }}
 {{ $max_columns_key := printf "%d" $max_columns_int }}
-{{ $gridClass := index $columnsClasses $max_columns_key | default "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" }}
+{{ $itemClass := index $columnsClasses $max_columns_key | default "w-full sm:w-1/2 lg:w-1/3 xl:w-1/4" }}
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   
@@ -188,7 +188,7 @@
           {{ else }}
             {{ $sortKey = printf "%s|%s" $primary $familyLower }}
           {{ end }}
-          {{ $groupProfiles = $groupProfiles | append (dict "profile" $profile "sort_val" $sortKey) }}
+          {{ $groupProfiles = $groupProfiles | append (dict "profile" $profile "profileData" $profileData "sort_val" $sortKey) }}
         {{ end }}
       {{ end }}
       {{ $groupProfiles = sort $groupProfiles "sort_val" $groupOrder }}
@@ -204,7 +204,7 @@
       {{ end }}
 
       {{ if $hasGroupContent }}
-      <div class="{{ $gridClass }} w-full"> 
+      <div class="flex flex-wrap justify-center w-full -mx-4"> 
       <!-- <div class="flex"> -->
         {{ if eq (len $groupProfiles) 0 }}
           {{ if $show_empty_groups }}
@@ -213,15 +213,27 @@
         {{ end }}
         {{ range $groupProfile := $groupProfiles }}
           {{ $profile := $groupProfile.profile }}
+          {{ $profileData := $groupProfile.profileData }}
           {{ $avatar := $profile.avatar }}
           {{ $link := printf "/authors/%s/" $profile.slug }}
           {{ $nameSource := $profile.name_given | default $profile.title | default "?" }}
           {{ $initial := cond (gt (len $nameSource) 0) (upper (substr $nameSource 0 1)) "?" }}
           
-          <div class="group relative">
-            <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          {{ $isPI := false }}
+          {{ $uRawItem := $profileData.user_groups | default $profile.user_groups }}
+          {{ if reflect.IsSlice $uRawItem }}
+            {{ range $uRawItem }}
+              {{ if eq (printf "%v" .) "PI" }}{{ $isPI = true }}{{ end }}
+            {{ end }}
+          {{ else if eq (printf "%T" $uRawItem) "string" }}
+            {{ if eq (strings.TrimSpace $uRawItem) "PI" }}{{ $isPI = true }}{{ end }}
+          {{ end }}
+          
+          <div class="group relative {{ if $isPI }}w-full{{ else }}{{ $itemClass }}{{ end }} px-4 mb-8">
+            <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 max-w-[400px] mx-auto {{ if $isPI }}md:max-w-none flex flex-col md:flex-row{{ end }}">
               
-              <a href="{{ $link }}" class="block relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800" aria-label="{{ $profile.title }}">
+              {{ if not (index $profileData "disable_photo") }}
+              <a href="{{ $link }}" class="block relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800 {{ if $isPI }}md:w-1/3 md:shrink-0 md:max-w-[400px]{{ end }}" aria-label="{{ $profile.title }}">
                 {{ if $avatar }}
                   {{ $image := $avatar.Fit "600x600 Center q90" }}
                   <img src="{{ $image.RelPermalink }}" 
@@ -236,8 +248,9 @@
                   </div>
                 {{ end }}
               </a>
+              {{ end }}
               
-              <div class="p-6">
+              <div class="p-6 {{ if $isPI }}flex-1{{ end }}">
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
                   <a href="{{ $link }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors" aria-label="{{ $profile.title }}">
                     {{ $profile.title }}
@@ -312,7 +325,7 @@
                 </div>
                 {{ end }}
                 
-                {{ $links_raw := $profile.links }}
+                {{ $links_raw := index $profileData "social" | default $profile.links }}
                 {{ $links := slice }}
                 {{ if reflect.IsSlice $links_raw }}
                   {{ $links = $links_raw }}
@@ -406,19 +419,32 @@
       {{ else }}
         {{ $sortKey = printf "%s|%s" $primary $familyLower }}
       {{ end }}
-      {{ $sorted = $sorted | append (dict "profile" $profile "sort_val" $sortKey) }}
+      {{ $sorted = $sorted | append (dict "profile" $profile "profileData" $profileData "sort_val" $sortKey) }}
     {{ end }}
     {{ $sorted = sort $sorted "sort_val" $order }}
-    <div class="{{ $gridClass }}">
+    <div class="flex flex-wrap justify-center w-full -mx-4">
       {{ range $sortedProfile := $sorted }}
         {{ $profile := $sortedProfile.profile }}
+        {{ $profileData := $sortedProfile.profileData }}
         {{ $avatar := $profile.avatar }}
         {{ $link := printf "/authors/%s/" $profile.slug }}
         {{ $nameSource := $profile.name_given | default $profile.title | default "?" }}
         {{ $initial := cond (gt (len $nameSource) 0) (upper (substr $nameSource 0 1)) "?" }}
-        <div class="group relative">
-          <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <a href="{{ $link }}" class="block relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800" aria-label="{{ $profile.title }}">
+        
+        {{ $isPI := false }}
+        {{ $uRawItem := $profileData.user_groups | default $profile.user_groups }}
+        {{ if reflect.IsSlice $uRawItem }}
+          {{ range $uRawItem }}
+            {{ if eq (printf "%v" .) "PI" }}{{ $isPI = true }}{{ end }}
+          {{ end }}
+        {{ else if eq (printf "%T" $uRawItem) "string" }}
+          {{ if eq (strings.TrimSpace $uRawItem) "PI" }}{{ $isPI = true }}{{ end }}
+        {{ end }}
+        
+        <div class="group relative {{ if $isPI }}w-full{{ else }}{{ $itemClass }}{{ end }} px-4 mb-8">
+          <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 max-w-[400px] mx-auto {{ if $isPI }}md:max-w-none flex flex-col md:flex-row{{ end }}">
+            {{ if not (index $profileData "disable_photo") }}
+            <a href="{{ $link }}" class="block relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800 {{ if $isPI }}md:w-1/3 md:shrink-0 md:max-w-[400px]{{ end }}" aria-label="{{ $profile.title }}">
               {{ if $avatar }}
               {{ $image := $avatar.Fit "600x600 Center q90" }}
               <img src="{{ $image.RelPermalink }}" 
@@ -433,7 +459,8 @@
               </div>
               {{ end }}
             </a>
-            <div class="p-6">
+            {{ end }}
+            <div class="p-6 {{ if $isPI }}flex-1{{ end }}">
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">
                 <a href="{{ $link }}" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors" aria-label="{{ $profile.title }}">
                   {{ $profile.title }}
@@ -503,7 +530,7 @@
               </div>
               {{ end }}
 
-              {{ $links_raw := $profile.links }}
+              {{ $links_raw := index $profileData "social" | default $profile.links }}
               {{ $links := slice }}
               {{ if reflect.IsSlice $links_raw }}
                 {{ $links = $links_raw }}

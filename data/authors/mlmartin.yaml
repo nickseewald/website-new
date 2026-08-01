@@ -1,12 +1,14 @@
 # Display name
 title: Melissa Lynne Martin
 
+disable_photo: true
+
 # Role/position
-role: PhD Student
+role: PhD Graduate
 
 # Short bio (supports Markdown)
 bio: |
-  PhD Student in Biostatistics at the University of Pennsyvlania Perelman School of Medicine.
+  Senior Scientist, Biostatistics. Merck & Co., Inc.
   
 highlight_user: true
 
@@ -16,7 +18,7 @@ organizations:
     url: "https://www.med.upenn.edu/"
 
 user_groups:
-  - Biostatistics Students
+  - Alumni
 
 # Social/contact links
 social:
@@ -28,6 +30,9 @@ social:
 # Education (optional)
 education:
   courses:
+  - course: PhD in Biostatistics
+    institution: University of Pennsylvania
+    year: 2026
   - course: MS in Biostatistics
     institution: University of Pennsylvania
     year: 2020
