@@ -19,6 +19,8 @@ user_groups:
 
 # Social/contact links
 social:
+- icon: hero/globe-alt
+  link: https://meghankgerety.com/
 - icon: academicons/orcid
   link: https://orcid.org/0000-0002-8586-5139
 - icon: academicons/google-scholar
