@@ -65,6 +65,5 @@ slides: ""
 #   Otherwise, set `projects = []`.
 projects: [multilevel-did]
 ---
-{{% callout note %}}
-My registration for SER 2025 was generously supported by a travel grant from the Society.
-{{% /callout %}}
+> [!NOTE]
+> My registration for SER 2025 was generously supported by a travel grant from the Society.
