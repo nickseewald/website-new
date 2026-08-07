@@ -1,3 +1,5 @@
+github.com/HugoBlox/kit/modules/analytics v0.3.2 h1:kg/th7kAgETFgCJCiFZfLjAC/KAVeFxlExVlOjNg0jE=
+github.com/HugoBlox/kit/modules/analytics v0.3.2/go.mod h1:lEEX95UxzXCMulsg51SIkOtlrj3nKU99fAOV+rQ91bw=
 github.com/HugoBlox/kit/modules/blox v0.0.0-20260115004143-27742d31a056 h1:kSDLLRiRGcMhPBXz/HQqXrOim4SZsM79pM2ezog2aL0=
 github.com/HugoBlox/kit/modules/blox v0.0.0-20260115004143-27742d31a056/go.mod h1:0F2Ss2NeylmaBP7+qx0U6zFPeMZ9NoLbAQakKXDqygo=
 github.com/HugoBlox/kit/modules/blox v0.12.0 h1:IFw9heH1MBgs2kCdproVZeUu2z2x+cjy9vCAegyldjc=

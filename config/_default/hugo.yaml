@@ -22,11 +22,11 @@ removePathAccents: true
 ############################
 
 cascade:
-  - _target:
+  - target:
       path: /slides/**
       kind: page
     outputs: [HTML, present]
-  - _target:
+  - target:
       path: /events/**
       kind: page
     pager: false

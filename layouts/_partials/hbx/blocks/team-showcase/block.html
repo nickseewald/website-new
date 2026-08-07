@@ -90,9 +90,9 @@
 
   {{/* Build profiles from data/authors */}}
   {{ $allProfiles := slice }}
-  {{ range $slug, $_ := site.Data.authors }}
+  {{ range $slug, $_ := hugo.Data.authors }}
     {{ $profile := partial "functions/get_author_profile" (dict "slug" $slug) }}
-    {{ $profileData := index site.Data.authors $slug }}
+    {{ $profileData := index hugo.Data.authors $slug }}
     {{ $allProfiles = $allProfiles | append (dict "profile" $profile "profileData" $profileData) }}
   {{ end }}
 

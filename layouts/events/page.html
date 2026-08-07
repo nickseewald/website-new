@@ -251,19 +251,20 @@
           <div>{{ .Params.abstract | markdownify }}</div>
         {{ end }}
 
+        {{ $event_name := .Params.event | default .Params.event_name }}
+        {{ if $event_name }}
+          <div class="font-bold text-2xl">{{ i18n "event" }}</div>
+          <div>
+            {{ with .Params.event_url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
+            {{ $event_name | markdownify }}
+            {{ if .Params.event_url }}</a>{{ end }}
+          </div>
+        {{ end }}
+
         {{ if eq .Type "events" }}
           <div class="font-bold text-2xl">{{ i18n "date" }}</div>
           <div>
             {{ partial "functions/get_event_dates" . }}
-          </div>
-        {{ end }}
-
-        {{ if .Params.event_name }}
-          <div class="font-bold text-2xl">{{ i18n "event" }}</div>
-          <div>
-            {{ with .Params.event_url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
-            {{ .Params.event_name | markdownify }}
-            {{ if .Params.event_url }}</a>{{ end }}
           </div>
         {{ end }}
 
