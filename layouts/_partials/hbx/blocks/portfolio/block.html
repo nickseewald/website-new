@@ -252,7 +252,8 @@
   {{ end }}
 
   {{/* Project Grid with staggered reveal animation */}}
-  <div class="grid grid-cols-1 {{ $grid_class }} gap-6" data-stagger="100">
+  {{ $view := index $design "view" | default "card" }}
+  <div class="{{ if eq $view "showcase" }}flex flex-col gap-8 md:gap-24{{ else }}grid grid-cols-1 {{ $grid_class }} gap-6{{ end }}" data-stagger="100">
     {{ range $index, $item := $query }}
       {{ $item_key := $item.RelPermalink }}
       {{ $card_allowed_filters := index $allowed_map $item_key }}
@@ -301,13 +302,212 @@
       {{ end }}
       {{ $render_status_badge := and $show_status_badge (ne $status_display "") }}
 
+      {{/* Summary */}}
+      {{ $summary := "" }}
+      {{ $summary_raw := $item.Params.summary }}
+      {{ if $summary_raw }}
+        {{ $summary = strings.TrimSpace (printf "%v" $summary_raw) }}
+      {{ end }}
+
+      {{/* Tech Stack Tags */}}
+      {{ $tech_stack := slice }}
+      {{ $tech_raw := $item.Params.tech_stack }}
+      {{ if reflect.IsSlice $tech_raw }}
+        {{ range $tech_raw }}
+          {{ $tech := strings.TrimSpace (printf "%v" .) }}
+          {{ if $tech }}{{ $tech_stack = $tech_stack | append $tech }}{{ end }}
+        {{ end }}
+      {{ else if eq (printf "%T" $tech_raw) "string" }}
+        {{ $tech_string := strings.TrimSpace $tech_raw }}
+        {{ if $tech_string }}
+          {{ if strings.Contains $tech_string "," }}
+            {{ range (split $tech_string ",") }}
+              {{ $tech := strings.TrimSpace . }}
+              {{ if $tech }}{{ $tech_stack = $tech_stack | append $tech }}{{ end }}
+            {{ end }}
+          {{ else }}
+            {{ $tech_stack = slice $tech_string }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
+      {{/* Action Links */}}
+      {{ $links := slice }}
+      {{ $links_raw := $item.Params.links }}
+      {{ $links_iter := slice }}
+      {{ if reflect.IsSlice $links_raw }}
+        {{ $links_iter = $links_raw }}
+      {{ else if and $links_raw (reflect.IsMap $links_raw) }}
+        {{ $links_iter = slice $links_raw }}
+      {{ end }}
+      {{ if gt (len $links_iter) 0 }}
+        {{ range $links_iter }}
+          {{ $url := "" }}
+          {{ $label := "" }}
+          {{ $icon := "" }}
+          {{ $type := "" }}
+          {{ $new_tab := false }}
+          {{ if reflect.IsMap . }}
+            {{ with index . "url" }}{{ $url = strings.TrimSpace (printf "%v" .) }}{{ end }}
+            {{ if not $url }}
+              {{ with index . "link" }}{{ $url = strings.TrimSpace (printf "%v" .) }}{{ end }}
+            {{ end }}
+            {{ with index . "label" }}{{ $label = strings.TrimSpace (printf "%v" .) }}{{ end }}
+            {{ if not $label }}
+              {{ with index . "name" }}{{ $label = strings.TrimSpace (printf "%v" .) }}{{ end }}
+            {{ end }}
+            {{ with index . "type" }}{{ $type = lower (strings.TrimSpace (printf "%v" .)) }}{{ end }}
+            {{ with index . "icon" }}{{ $icon = printf "%v" . }}{{ end }}
+            {{ $new_tab = partial "functions/coerce_bool" (dict "value" (index . "new_tab") "default" false) }}
+          {{ else if eq (printf "%T" .) "string" }}
+            {{ $url = strings.TrimSpace . }}
+          {{ end }}
+          {{ if $url }}
+            {{ if not $label }}
+              {{ if eq $type "github" }}
+                {{ $label = i18n "portfolio_link_code" | default "Code" }}
+              {{ else if eq $type "live" }}
+                {{ $label = i18n "portfolio_link_live" | default "Live" }}
+              {{ else if eq $type "demo" }}
+                {{ $label = i18n "portfolio_link_demo" | default "Demo" }}
+              {{ else }}
+                {{ $label = i18n "portfolio_link_default" | default "Link" }}
+              {{ end }}
+            {{ end }}
+            {{ if not $icon }}
+              {{ if eq $type "github" }}
+                {{ $icon = "brands/github" }}
+              {{ else if eq $type "live" }}
+                {{ $icon = "globe-alt" }}
+              {{ else if eq $type "demo" }}
+                {{ $icon = "play" }}
+              {{ else }}
+                {{ $icon = "link" }}
+              {{ end }}
+            {{ end }}
+            {{ $links = $links | append (dict "url" $url "label" $label "icon" $icon "new_tab" $new_tab) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
+      {{ if eq $view "showcase" }}
+      <div
+        x-data="{ filters: {{ $card_allowed_filters_json }} }"
+        x-show="filters.includes(activeFilter)"
+        x-transition:enter="transition ease-out duration-500"
+        x-transition:enter-start="opacity-0 translate-y-8"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        class="hidden md:flex flex-col {{ if not (modBool $index 2) }} md:flex-row {{ else }} md:flex-row-reverse {{ end }} items-center gap-8 md:gap-12 group"
+      >
+        {{/* Text Column */}}
+        <div class="w-full md:flex-1 md:min-w-0 flex flex-col">
+          {{/* Title */}}
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+            <a href="{{ $item.RelPermalink }}" class="">
+              {{ $item.Title }}
+            </a>
+          </h3>
+          
+          {{/* Summary */}}
+          {{ if $summary }}
+          <p class="text-base text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+            {{ $summary | $page.RenderString }}
+          </p>
+          {{ else }}
+          <p class="text-base text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+            {{ $item.Summary | truncate 200 }}
+          </p>
+          {{ end }}
+
+          {{/* Tech Stack Tags */}}
+          {{ if gt (len $tech_stack) 0 }}
+          <div class="flex flex-wrap gap-2 mb-6">
+            {{ range $tech_stack }}
+            <span class="px-3 py-1 text-xs font-medium rounded-md bg-primary-100 dark:bg-primary-500/10 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-500/20">
+              {{ . }}
+            </span>
+            {{ end }}
+          </div>
+          {{ end }}
+
+          {{/* Action Links */}}
+          {{ if gt (len $links) 0 }}
+          <div class="flex items-center gap-4 flex-wrap">
+            {{ range $links }}
+              {{ $icon := index . "icon" | default "link" }}
+              {{ $label := index . "label" | default (i18n "portfolio_link_default" | default "Link") }}
+              {{ $link_url := index . "url" }}
+              {{ $new_tab := partial "functions/coerce_bool" (dict "value" (index . "new_tab") "default" false) }}
+              {{ $target := "" }}
+              {{ $scheme := (urls.Parse $link_url).Scheme }}
+              {{ if not $scheme }}
+                {{ if not (hasPrefix $link_url "#") }}
+                  {{ $link_url = $link_url | relLangURL }}
+                {{ end }}
+                {{ if eq (path.Ext $link_url) ".pdf" }}{{ $new_tab = true }}{{ end }}
+              {{ else if in (slice "http" "https") $scheme }}
+                {{ $new_tab = true }}
+              {{ end }}
+              {{ if $new_tab }}
+                {{ $target = "target=\"_blank\" rel=\"noopener noreferrer\"" }}
+              {{ end }}
+              <a 
+                href="{{ $link_url | safeURL }}" 
+                {{ $target | safeHTMLAttr }}
+                class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >
+                {{ partial "functions/get_icon" (dict "name" $icon "attributes" "class=\"w-4 h-4\"") }}
+                <span>{{ $label }}</span>
+              </a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+
+        {{/* Image Column */}}
+        <div class="w-full md:flex-1 md:min-w-0 relative">
+          <a href="{{ $item.RelPermalink }}" class="block overflow-hidden rounded-2xl shadow-lg border border-gray-100 dark:border-white/10 transition-transform duration-500 hover:scale-[1.02]">
+            {{ $image := $item.Resources.GetMatch "{featured,cover,thumbnail}*" }}
+            {{ if $image }}
+              {{ if not (reflect.IsImageResourceProcessable $image) }}
+                <img
+                  src="{{ $image.RelPermalink }}"
+                  alt="{{ $item.Title }}"
+                  class="w-full h-auto object-cover"
+                >
+              {{ else }}
+                {{ $img := $image.Fill "800x600 webp" }}
+                <img 
+                  src="{{ $img.RelPermalink }}" 
+                  alt="{{ $item.Title }}"
+                  class="w-full h-auto object-cover"
+                >
+              {{ end }}
+            {{ else }}
+              <div class="w-full aspect-[4/3] bg-gradient-to-br from-primary-600/20 via-secondary-600/10 to-primary-800/20 flex items-center justify-center">
+                {{ partial "functions/get_icon" (dict "name" $fallback_icon "attributes" "class=\"w-24 h-24 text-gray-400/50\"") }}
+              </div>
+            {{ end }}
+            
+            {{/* Status Badge */}}
+            {{ if $render_status_badge }}
+            <div class="absolute top-4 right-4">
+              <span class="px-3 py-1.5 text-xs font-semibold rounded-full border {{ $status_class }}">
+                {{ $status_display }}
+              </span>
+            </div>
+            {{ end }}
+          </a>
+        </div>
+      </div>
+      {{ end }}
       <article
         x-data="{ filters: {{ $card_allowed_filters_json }} }"
         x-show="filters.includes(activeFilter)"
         x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0 scale-95 translate-y-4"
         x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-        class="group relative flex flex-col bg-white dark:bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-white/[0.08] overflow-hidden hover:border-primary-500/50 hover:bg-gray-50 dark:hover:bg-white/[0.06] transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 card-hover-lift"
+        class="{{ if eq $view "showcase" }}md:hidden {{ end }}group relative flex flex-col bg-white dark:bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-white/[0.08] overflow-hidden hover:border-primary-500/50 hover:bg-gray-50 dark:hover:bg-white/[0.06] transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 card-hover-lift"
       >
         {{/* Card Header / Image */}}
         <div class="relative h-48 overflow-hidden">
@@ -357,11 +557,6 @@
           </h3>
           
           {{/* Summary */}}
-          {{ $summary := "" }}
-          {{ $summary_raw := $item.Params.summary }}
-          {{ if $summary_raw }}
-            {{ $summary = strings.TrimSpace (printf "%v" $summary_raw) }}
-          {{ end }}
           {{ if $summary }}
           <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-4">
             {{ $summary | $page.RenderString }}
@@ -373,26 +568,6 @@
           {{ end }}
 
           {{/* Tech Stack Tags - fixed 2-line height for consistency */}}
-          {{ $tech_stack := slice }}
-          {{ $tech_raw := $item.Params.tech_stack }}
-          {{ if reflect.IsSlice $tech_raw }}
-            {{ range $tech_raw }}
-              {{ $tech := strings.TrimSpace (printf "%v" .) }}
-              {{ if $tech }}{{ $tech_stack = $tech_stack | append $tech }}{{ end }}
-            {{ end }}
-          {{ else if eq (printf "%T" $tech_raw) "string" }}
-            {{ $tech_string := strings.TrimSpace $tech_raw }}
-            {{ if $tech_string }}
-              {{ if strings.Contains $tech_string "," }}
-                {{ range (split $tech_string ",") }}
-                  {{ $tech := strings.TrimSpace . }}
-                  {{ if $tech }}{{ $tech_stack = $tech_stack | append $tech }}{{ end }}
-                {{ end }}
-              {{ else }}
-                {{ $tech_stack = slice $tech_string }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
           {{ if gt (len $tech_stack) 0 }}
           <div class="flex flex-wrap gap-1.5 mb-4 min-h-[3.5rem]">
             {{ range first 4 $tech_stack }}
@@ -409,63 +584,6 @@
           {{ end }}
 
           {{/* Action Links - pushed to bottom with mt-auto */}}
-          {{ $links := slice }}
-          {{ $links_raw := $item.Params.links }}
-          {{ $links_iter := slice }}
-          {{ if reflect.IsSlice $links_raw }}
-            {{ $links_iter = $links_raw }}
-          {{ else if and $links_raw (reflect.IsMap $links_raw) }}
-            {{ $links_iter = slice $links_raw }}
-          {{ end }}
-          {{ if gt (len $links_iter) 0 }}
-            {{ range $links_iter }}
-              {{ $url := "" }}
-              {{ $label := "" }}
-              {{ $icon := "" }}
-              {{ $type := "" }}
-              {{ $new_tab := false }}
-              {{ if reflect.IsMap . }}
-                {{ with index . "url" }}{{ $url = strings.TrimSpace (printf "%v" .) }}{{ end }}
-                {{ if not $url }}
-                  {{ with index . "link" }}{{ $url = strings.TrimSpace (printf "%v" .) }}{{ end }}
-                {{ end }}
-                {{ with index . "label" }}{{ $label = strings.TrimSpace (printf "%v" .) }}{{ end }}
-                {{ if not $label }}
-                  {{ with index . "name" }}{{ $label = strings.TrimSpace (printf "%v" .) }}{{ end }}
-                {{ end }}
-                {{ with index . "type" }}{{ $type = lower (strings.TrimSpace (printf "%v" .)) }}{{ end }}
-                {{ with index . "icon" }}{{ $icon = printf "%v" . }}{{ end }}
-                {{ $new_tab = partial "functions/coerce_bool" (dict "value" (index . "new_tab") "default" false) }}
-              {{ else if eq (printf "%T" .) "string" }}
-                {{ $url = strings.TrimSpace . }}
-              {{ end }}
-              {{ if $url }}
-                {{ if not $label }}
-                  {{ if eq $type "github" }}
-                    {{ $label = i18n "portfolio_link_code" | default "Code" }}
-                  {{ else if eq $type "live" }}
-                    {{ $label = i18n "portfolio_link_live" | default "Live" }}
-                  {{ else if eq $type "demo" }}
-                    {{ $label = i18n "portfolio_link_demo" | default "Demo" }}
-                  {{ else }}
-                    {{ $label = i18n "portfolio_link_default" | default "Link" }}
-                  {{ end }}
-                {{ end }}
-                {{ if not $icon }}
-                  {{ if eq $type "github" }}
-                    {{ $icon = "brands/github" }}
-                  {{ else if eq $type "live" }}
-                    {{ $icon = "globe-alt" }}
-                  {{ else if eq $type "demo" }}
-                    {{ $icon = "play" }}
-                  {{ else }}
-                    {{ $icon = "link" }}
-                  {{ end }}
-                {{ end }}
-                {{ $links = $links | append (dict "url" $url "label" $label "icon" $icon "new_tab" $new_tab) }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
           {{ if gt (len $links) 0 }}
           <div class="flex items-center gap-3 pt-3 border-t border-gray-100 dark:border-white/5 mt-auto">
             {{ range $links }}
