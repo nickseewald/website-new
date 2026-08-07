@@ -44,9 +44,9 @@ sections:
         tag: 'health policy'
       - name: Sequentially-Randomized Trials
         tag: 'SMARTs'
-    design:
-      view: 'showcase'
-      columns: '1'
+  design:
+    view: showcase
+    columns: '1'
 - block: portfolio
   id: collab-projects
   content:
