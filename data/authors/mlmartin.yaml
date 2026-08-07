@@ -14,8 +14,8 @@ highlight_user: true
 
 # Organization(s)
 organizations:
-  - name: University of Pennsylvania Perelman School of Medicine
-    url: "https://www.med.upenn.edu/"
+  - name: Merck & Co., Inc.
+    url: "https://www.merck.com/"
 
 user_groups:
   - Alumni
@@ -26,6 +26,8 @@ social:
   link: https://orcid.org/0000-0001-8631-5596
 - icon: academicons/google-scholar
   link: https://scholar.google.com/citations?hl=en&user=ZKugvewAAAAJ
+- icon: brands/github
+  link: https://github.com/melissalynnemartin
 
 # Education (optional)
 education:
